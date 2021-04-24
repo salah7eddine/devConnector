@@ -5,12 +5,10 @@ import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
-const Profiles = ({ getProfiles, profile: { profile, loading } }) => {
+const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
-
-  console.log(profile);
 
   return (
     <Fragment>
@@ -24,8 +22,8 @@ const Profiles = ({ getProfiles, profile: { profile, loading } }) => {
             developers
           </p>
           <div className='profiles'>
-            {profile.length > 0 ? (
-              profile.map((profile) => (
+            {profiles.length > 0 ? (
+              profiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
