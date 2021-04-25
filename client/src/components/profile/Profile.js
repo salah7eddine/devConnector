@@ -8,6 +8,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 
 const Profile = ({
   getProfileById,
@@ -43,7 +44,7 @@ const Profile = ({
                 <Fragment>
                   {profile.experience.map((experience) => (
                     <ProfileExperience
-                      ley={experience._id}
+                      key={experience._id}
                       experience={experience}
                     />
                   ))}
@@ -58,7 +59,7 @@ const Profile = ({
                 <Fragment>
                   {profile.education.map((education) => (
                     <ProfileEducation
-                      ley={education._id}
+                      key={education._id}
                       education={education}
                     />
                   ))}
@@ -67,6 +68,9 @@ const Profile = ({
                 <h4>No education credentials</h4>
               )}
             </div>
+            {profile.githubUsername && (
+              <ProfileGithub username={profile.githubUsername} />
+            )}
           </div>
         </Fragment>
       )}
